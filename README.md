@@ -128,7 +128,12 @@ The generated submission contains:
 * Reasoning
 
 ---
+## Demo Sandbox
 
+Google Colab notebook:
+(https://colab.research.google.com/drive/1lf3jRvbo4RPEPV7pPDSWUpJGG8gg0hFp?usp=sharing)
+
+---
 # Design Goals
 
 * Interpretable ranking
