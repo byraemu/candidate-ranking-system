@@ -1,4 +1,4 @@
-# candidate-ranking-system
+
 # Hybrid Candidate Ranking System
 
 ## Overview
