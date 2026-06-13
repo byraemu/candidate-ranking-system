@@ -1,0 +1,27 @@
+team_name: "<Provided in submission form>"
+
+primary_contact:
+  name: "<Provided in submission form>"
+  email: "<Provided in submission form>"
+  phone: "<Provided in submission form>"
+
+github_repository: "https://github.com/byraemu/candidate-ranking-system.git"
+
+sandbox_link: "https://colab.research.google.com/drive/1lf3jRvbo4RPEPV7pPDSWUpJGG8gg0hFp?usp=sharing"
+
+ai_tools:
+
+* ChatGPT
+
+compute_environment: "Windows 11, Python 3.x, Local CPU, scikit-learn"
+
+team_members:
+
+* "<Provided in submission form>"
+
+methodology_summary: 
+Hybrid candidate ranking system combining rule-based scoring,
+weighted skill matching, TF-IDF semantic similarity, and
+penalty-based filtering to generate ranked candidate
+recommendations with reasoning.
+
