@@ -1,49 +1,48 @@
-
 # Hybrid Candidate Ranking System
 
 ## Overview
 
-This project implements a **hybrid candidate ranking system** that recommends the most relevant candidates for a given job description by combining **rule-based scoring** with **TF-IDF semantic similarity**.
+This project implements a hybrid candidate ranking system that recommends the most relevant candidates for a given job description by combining rule-based scoring with TF-IDF semantic similarity.
 
-The objective is to rank a large pool of candidates according to their relevance and generate the **Top 100 recommendations** along with reasoning for each recommendation.
+The objective is to rank a large pool of candidates according to their relevance and generate the Top 100 recommendations along with reasoning for each recommendation.
 
 ---
 
-# Methodology
+## Methodology
 
 The ranking pipeline combines multiple signals:
 
-* **Skill Matching**
+### 1. Skill Matching
 
-  * Domain-specific skill weights
-  * Proficiency level
-  * Experience duration
-  * Endorsements
+* Domain-specific skill weights
+* Proficiency level
+* Experience duration
+* Endorsements
 
-* **Career Title Matching**
+### 2. Career Title Matching
 
-  * Rewards titles closely aligned with the target role.
+Rewards titles closely aligned with the target role.
 
-* **Profile Description Matching**
+### 3. Profile Description Matching
 
-  * Detects relevant technologies and responsibilities from candidate descriptions.
+Detects relevant technologies and responsibilities from candidate descriptions.
 
-* **Semantic Similarity**
+### 4. Semantic Similarity
 
-  * TF-IDF vectorization converts the job description and candidate profiles into vector representations.
-  * Cosine similarity measures semantic relevance between the job description and each candidate.
+* TF-IDF vectorization converts the job description and candidate profiles into vector representations.
+* Cosine similarity measures semantic relevance between the job description and each candidate.
 
-* **Penalty System**
+### 5. Penalty System
 
-  * Applies penalties to candidates from clearly irrelevant domains (for example accounting or HR) to reduce false positives.
+Applies penalties to candidates from clearly irrelevant domains (for example accounting or HR) to reduce false positives.
 
 The final score is computed by combining these components and ranking candidates in descending order.
 
 ---
 
-# Pipeline
+## Pipeline
 
-```
+```text
 Job Description
         │
         ▼
@@ -70,9 +69,9 @@ submission.csv
 
 ---
 
-# Project Structure
+## Project Structure
 
-```
+```text
 candidate-ranking-system/
 
 ├── README.md
@@ -80,14 +79,27 @@ candidate-ranking-system/
 ├── main.ipynb
 ├── submission.csv
 ├── submission_metadata.yaml
-
-├── data/
-│     └── sample_candidates.json
+├── sample_candidates.json
 ```
 
 ---
 
-# Technologies Used
+## Input
+
+The system expects candidate data in JSON/JSONL format containing:
+
+* candidate_id
+* profile
+* career_history
+* education
+* skills
+* certifications
+* languages
+* redrob_signals
+
+---
+
+## Technologies Used
 
 * Python
 * Scikit-learn
@@ -96,57 +108,56 @@ candidate-ranking-system/
 
 ---
 
-# Running the Project
+## Running the Project
 
-1. Install dependencies
+### 1. Install dependencies
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
-2. Open and execute
+### 2. Run the notebook
 
-```
+Open:
+
+```text
 main.ipynb
 ```
 
-3. The notebook generates the ranked output:
+Execute all cells from top to bottom.
 
-```
+### 3. Output
+
+The notebook generates:
+
+```text
 submission.csv
 ```
 
 ---
 
-# Output Format
+## Output Format
 
 The generated submission contains:
 
-* Rank
-* Candidate ID
-* Score
-* Reasoning
+* rank
+* candidate_id
+* score
+* reasoning
 
 ---
+
 ## Demo Sandbox
 
 Google Colab notebook:
-(https://colab.research.google.com/drive/1lf3jRvbo4RPEPV7pPDSWUpJGG8gg0hFp?usp=sharing)
+
+https://colab.research.google.com/drive/1lf3jRvbo4RPEPV7pPDSWUpJGG8gg0hFp?usp=sharing
 
 ---
-# Design Goals
+
+## Design Goals
 
 * Interpretable ranking
 * Hybrid rule-based + semantic matching
 * Reproducible pipeline
 * Efficient processing of large candidate pools
-
----
-
-# Future Improvements
-
-* Sentence Transformer embeddings
-* Learning-to-Rank models
-* Dynamic skill weighting
-* Feedback-driven ranking optimization
-
